@@ -9,10 +9,8 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"os/signal"
 	"path"
 	"strings"
-	"syscall"
 	"time"
 )
 
@@ -61,7 +59,7 @@ func SafeParse() error {
 	issueAllFlagChangeCallbacks()
 
 	ch := make(chan os.Signal)
-	signal.Notify(ch, syscall.SIGHUP)
+	//signal.Notify(ch, syscall.SIGHUP)
 	go sighupHandler(ch)
 
 	go configUpdater()
